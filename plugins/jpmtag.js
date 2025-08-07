@@ -11,7 +11,8 @@ async function getAllGroups(sock) {
         const groups = await sock.groupFetchAllParticipating();
         return Object.values(groups).map(group => ({
             id: group.id,
-            name: group.subject
+            name: group.subject,
+            participants : group.participants
         }));
     } catch (error) {
         console.error(clc.red("❌ Gagal mengambil grup:"), error);
@@ -19,7 +20,7 @@ async function getAllGroups(sock) {
     }
 }
 
-async function jpm(sock, sender, messages, key, messageEvent) {
+async function jpmtag(sock, sender, messages, key, messageEvent) {
     const message = messageEvent.messages?.[0];
     let imagePath = null;
 
@@ -40,7 +41,7 @@ async function jpm(sock, sender, messages, key, messageEvent) {
     const parts = messages.trim().split(' ');
     if (parts.length < 2) {
         return sock.sendMessage(sender, {
-            text: `*ᴄᴀʀᴀ ᴘᴇɴɢɢᴜɴᴀᴀɴ*\n➽ ᴊᴘᴍ ᴛᴇxᴛ\n\nᴄᴏɴᴛᴏʜ: ᴊᴘᴍ ᴘᴇꜱᴀɴ`
+            text: `*ᴄᴀʀᴀ ᴘᴇɴɢɢᴜɴᴀᴀɴ*\n➽ ᴊᴘᴍᴛᴀɢ ᴛᴇxᴛ\n\nᴄᴏɴᴛᴏʜ: ᴊᴘᴍᴛᴀɢ ᴘᴇꜱᴀɴ`
         });
     }
 
@@ -71,14 +72,18 @@ async function jpm(sock, sender, messages, key, messageEvent) {
 
     let groupCount = 1;
     for (const group of targetGroups) {
+         const participants = Array.isArray(group?.participants) ? group.participants : [];
+        const mentions = participants.map(p => p.id);
+
         console.log(clc.green(`[${groupCount}/${targetGroups.length}] Kirim ke grup: ${group.name}`));
+ 
 
         try {
             // Timeout pengiriman agar tidak hang selamanya
             await Promise.race([
                 sock.sendMessage(group.id, imagePath
-                    ? { image: fs.readFileSync(imagePath), caption: text }
-                    : { text }),
+                    ? { image: fs.readFileSync(imagePath), caption: text, mentions: mentions, }
+                    : { text, mentions: mentions }),
                 new Promise((_, reject) =>
                     setTimeout(() => reject(new Error('Timeout saat kirim pesan')), 10000)
                 )
@@ -96,4 +101,4 @@ async function jpm(sock, sender, messages, key, messageEvent) {
     });
 }
 
-module.exports = jpm;
+module.exports = jpmtag;

@@ -5,7 +5,7 @@ Script ini **TIDAK BOLEH DIPERJUALBELIKAN** dalam bentuk apa pun!
 ╔══════════════════════════════════════════════╗
 ║                🛠️ INFORMASI SCRIPT           ║
 ╠══════════════════════════════════════════════╣
-║ 📦 Version   : 1.3
+║ 📦 Version   : 1.4
 ║ 👨‍💻 Developer  : Azhari Creative              ║
 ║ 🌐 Website    : https://autoresbot.com       ║
 ║ 💻 GitHub     : github.com/autoresbot/resbot-jpm
@@ -16,14 +16,19 @@ Script **Autoresbot** resmi menjadi **Open Source** dan dapat digunakan secara g
 🔗 https://autoresbot.com
 */
 
-const numberAllowed = ['6285246154386','62xxxxxxxxx']; // Nomor yang diizinkan untuk chat ke bot, tambahkan kalau diperlukan
+const numberAllowed = ["6285246154386"]; // Nomor yang diizinkan untuk chat ke bot, tambahkan kalau diperlukan
 
-global.prefix = ['.', '#']; // Daftar prefix
+global.prefix = [".", "#"]; // Daftar prefix
 
-global.jeda = 5000; // 5 detik jeda pengiriman untuk pushkontak atau broadcast
+global.jeda = 15000; // 15 detik jeda pengiriman untuk pushkontak atau broadcast
 
-global.name_script = 'Script Jpm';
+global.name_script = "Script Resbot Jpm";
 
-global.version = '1.3';
+global.version = "1.4";
+
+global.autojpm = {
+  hidetag: false, // jadikan true kalau mau hidetag, atau false kalau tidak
+  jedaPutaran: 10000, // 10000 = 10 detik
+};
 
 module.exports = { numberAllowed };
