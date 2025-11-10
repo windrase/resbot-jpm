@@ -153,7 +153,7 @@ async function autojpm(sock, sender, messages, key, messageEvent) {
       clc.yellow(`🔁 Selesai ${putaran} putaran. Menunggu sebelum ulang...\n`)
     );
     putaran++;
-    await sleep(global.autojpm.jedaPutaran || 20000); // 20 detik jeda antar putaran
+    await sleep(global.autojpm.jedaPutaran || 10800000); // 20 detik jeda antar putaran
   }
 
   global.autojpmRunning = false;
