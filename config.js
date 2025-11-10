@@ -16,19 +16,19 @@ Script **Autoresbot** resmi menjadi **Open Source** dan dapat digunakan secara g
 🔗 https://autoresbot.com
 */
 
-const numberAllowed = ["6285246154386"]; // Nomor yang diizinkan untuk chat ke bot, tambahkan kalau diperlukan
+const numberAllowed = ["6285921645742"]; // Nomor yang diizinkan untuk chat ke bot, tambahkan kalau diperlukan
 
 global.prefix = [".", "#"]; // Daftar prefix
 
-global.jeda = 15000; // 15 detik jeda pengiriman untuk pushkontak atau broadcast
+global.jeda = 20000; // 15 detik jeda pengiriman untuk pushkontak atau broadcast
 
-global.name_script = "Script Resbot Jpm";
+global.name_script = "WINTUNELING VPN";
 
 global.version = "1.4";
 
 global.autojpm = {
   hidetag: false, // jadikan true kalau mau hidetag, atau false kalau tidak
-  jedaPutaran: 10000, // 10000 = 10 detik
+  jedaPutaran: 10800000, // 10000 = 10 detik
 };
 
 module.exports = { numberAllowed };
