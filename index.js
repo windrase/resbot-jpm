@@ -55,9 +55,11 @@ async function connectToWhatsApp(number = null) {
       printQRInTerminal: false,
       connectTimeoutMs: 6000,
       logger: P({ level: "silent" }),
+      downloadHistory: false,
+      markOnlineOnConnect: false,
       // syncFullHistory: false,  // Nonaktifkan sinkronisasi riwayat chat
       // emitOwnEvents: false,  // Hindari pemrosesan event milik sendiri
-      // markOnlineOnConnect: false,  // Hindari update status online setiap terhubung
+      // Hindari update status online setiap terhubung
       // downloadHistory: false,  // Hindari unduhan otomatis riwayat chat
     });
 
